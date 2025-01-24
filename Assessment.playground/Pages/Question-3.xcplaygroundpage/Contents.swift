@@ -38,7 +38,8 @@ func sortEventsInDescendingOrderByDate(fileNameWithoutExtension:String) {
     let sortQuarters=groupedEvents.keys.sorted(by: >)
     for quarter in sortQuarters {
         print("   \(quarter)   ")
-        let events=groupedEvents[quarter]
+        var events=groupedEvents[quarter]
+        events!.sort{$0.date>$1.date}
         for event in events! {
             print("\(event.name) , \(event.date) , \(event.time) , \(event.location)")
         }
