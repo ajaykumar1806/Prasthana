@@ -14,11 +14,8 @@ class NavigationViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         if let date = formatter.date(from: event.date) {
-            let day = Calendar.current.component(.day, from: date)
-            let month = Calendar.current.component(.month, from: date)
-            let monthSymbol = Calendar.current.monthSymbols[month-1]
-            let year = Calendar.current.component(.year, from: date)
-            return "\(day) \(monthSymbol) \(year)"
+            formatter.dateFormat = "EEEE, d MMMM yyyy"
+            return formatter.string(from: date)
         }
         return ""
     }

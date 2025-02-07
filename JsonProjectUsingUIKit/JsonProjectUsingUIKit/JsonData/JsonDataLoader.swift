@@ -17,9 +17,8 @@ func jsonDataRetrieval() -> [String:[Event]] {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd"
                 if let date = formatter.date(from: event.date) {
-                    let month = Calendar.current.component(.month, from: date)
-                    let year = Calendar.current.component(.year, from: date)
-                    let key = "\(Calendar.current.monthSymbols[month - 1]) - \(year)"
+                    formatter.dateFormat = "MMMM-yyyy"
+                    let key = formatter.string(from: date)
                     if dictionaryOfEvents[key] == nil {
                         dictionaryOfEvents[key] = []
                     }
