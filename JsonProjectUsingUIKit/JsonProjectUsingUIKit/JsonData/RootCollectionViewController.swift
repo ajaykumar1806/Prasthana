@@ -97,7 +97,7 @@ extension RootCollectionViewController:UICollectionViewDelegateFlowLayout {
     }
 }
 
-//#Preview {
-//    let layout = UICollectionViewFlowLayout()
-//    return RootCollectionViewController(collectionViewLayout: layout)
-//}
+#Preview {
+    let layout = UICollectionViewFlowLayout()
+    return RootCollectionViewController(collectionViewLayout: layout)
+}

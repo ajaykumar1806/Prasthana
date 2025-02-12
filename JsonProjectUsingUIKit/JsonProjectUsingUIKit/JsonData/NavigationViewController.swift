@@ -42,7 +42,7 @@ class NavigationViewController: UIViewController {
         
         let dateLabel=UILabel()
         dateLabel.text = parsedDate
-        dateLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 25)
         
         let timeLabel=UILabel()
         timeLabel.text = event.time
