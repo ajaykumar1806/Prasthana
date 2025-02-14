@@ -25,6 +25,7 @@ struct MainView: View {
                                 .foregroundStyle(.white)
                         }
                     
+                    
                     Circle()
                         .fill(Color(red: 0.024, green: 0.381, blue: 0.169))
                         .frame(width: 40)
