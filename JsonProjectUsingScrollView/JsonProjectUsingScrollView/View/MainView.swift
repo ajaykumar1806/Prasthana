@@ -65,8 +65,8 @@ struct MainView: View {
             }
             Spacer()
             
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 0) {
+            TabView {
+//                LazyHStack(spacing: 0) {
                     ForEach(dictionaryOfEvents.keys.sorted(by:{
                         let formatter = DateFormatter()
                         formatter.dateFormat = "MMMM-yyyy"
@@ -97,8 +97,9 @@ struct MainView: View {
                         
                     }
                 }
-            }
-            .scrollTargetBehavior(.paging)
+//            }
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
     }
 }

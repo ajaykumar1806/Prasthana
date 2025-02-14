@@ -12,19 +12,19 @@ struct EventCellView: View {
     let event:Event
     var body: some View {
         HStack {
-            VStack {
-                Text(String(eventDay(dateString: event.date) ?? 0))
-                    .font(.system(size: 35))
-                    .bold()
-                Text(eventDayName(dateString: event.date) ?? "NA")
-                    .fontWeight(.light)
-            }
-            .foregroundStyle(Color.black)
-            .padding()
-            
             HStack {
+                VStack {
+                    Text(String(eventDay(dateString: event.date) ?? 0))
+                        .font(.system(size: 35))
+                        .bold()
+                    Text(eventDayName(dateString: event.date) ?? "NA")
+                        .fontWeight(.light)
+                }
+                .foregroundStyle(Color.black)
+                .padding()
                 Divider()
-            }.padding()
+                    .padding(.all , 10)
+            }
             
             VStack(alignment: .leading) {
                 Text(event.time)

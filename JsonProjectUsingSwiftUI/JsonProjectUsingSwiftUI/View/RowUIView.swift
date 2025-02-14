@@ -33,7 +33,7 @@ struct RowUIView: View {
             }
             .padding()
             Spacer()
-            Text("EV").symbolVariant(.circle)
+            Text("JP").symbolVariant(.circle)
                 .padding()
                 .background(Color(red: 0.024, green: 0.231, blue: 0.169))
                 .foregroundStyle(.white)
