@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct PublishView: View {
+    @StateObject var eventViewModel : EventViewModel
     var body: some View {
+        
         NavigationStack {
+            AnimationView()
             Spacer()
             Text("The Event has been created!")
-                .frame(width: 300, height: 100)
+                .frame(width: 300)
                 .font(.largeTitle)
                 .bold()
-                .lineSpacing(7)
-            
             Text("Get ready to rally! Your pickleball event is oficially set. Gather your paddles, and let the fun begin.")
                 .frame(width: 350, height: 100)
                 .multilineTextAlignment(.center)
@@ -29,7 +30,7 @@ struct PublishView: View {
                 HStack {
                     Image(systemName: "book")
                         .foregroundStyle(appColor)
-                    Text("\(courts.count) courts")
+                    Text("\(eventViewModel.courts.count) courts")
                     Spacer()
                 }
                 .padding(.horizontal)
@@ -44,21 +45,20 @@ struct PublishView: View {
             }
             .frame(width: 350)
             .padding()
-            .background(Color.init(red: 0.85, green: 1, blue: 0).opacity(0.12))
+            .background(appColorGradient)
             .cornerRadius(15)
             
-            NavigationLink(destination: PublishView(), label: {
+            NavigationLink(destination: AudienceView(), label: {
                 greenButtonDesign(buttonName: "View Schedule").padding(.vertical , 8)
             })
             
-            NavigationLink(destination: DraftView(), label: {
+            NavigationLink(destination: AudienceView(), label: {
                 blackButtonDesign(buttonName: "View Event Details").foregroundStyle(Color.white)
             })
+
         }
         Spacer()
     }
 }
 
-#Preview {
-    PublishView()
-}
+

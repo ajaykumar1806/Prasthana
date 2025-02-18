@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-let appColor:Color = Color.init(red: 0.75, green: 0.9, blue: 0)
 
 
 struct EventView: View {
-    let courts:[CourtCell]
-    @State var isWithInTeam:Bool = true
-    @State var isCoachAvailable:Bool = false
-    @State var isAudienceAvailable:Bool = true
+    
+    @StateObject private var viewModel = EventViewModel()
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -56,27 +54,33 @@ struct EventView: View {
                             Text("Play within my Team").bold()
                         }
                         .padding(.top , -8)
-                        Toggle("", isOn: $isWithInTeam).tint(appColor)
+                        Toggle("", isOn: $viewModel.isWithInTeam).tint(appColor)
                     }
                 }
                 .padding(.horizontal , 10)
                 
-                if isWithInTeam {
+                if !viewModel.isWithInTeam {
                     teamView()
                 }
-                if isCoachAvailable {
+                if viewModel.isCoachAvailable {
                     coachView()
                 }
-                if isAudienceAvailable {
-                    AudienceViewEdit()
+                if viewModel.isAudienceAvailable {
+                    AudienceView()
                 }
                 
-                ForEach(courts, id: \.courtNumber) { court in
+                Text("Courts")
+                    .foregroundStyle(.secondary).bold()
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal , 10)
+                
+                ForEach(viewModel.courts, id: \.courtNumber) { court in
                     CourtView(court: court).padding(.vertical , 8)
                 }
                 
             }
-            NavigationLink(destination: PublishView(), label: {
+            NavigationLink(destination: PublishView(eventViewModel: viewModel), label: {
                 greenButtonDesign(buttonName: "Publish Now")
             })
             
@@ -121,5 +125,5 @@ struct EventView: View {
 
 
 #Preview {
-    EventView(courts: courts)
+    EventView()
 }
