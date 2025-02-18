@@ -59,7 +59,4 @@ struct AnimationView: View {
     }
 }
 
-#Preview {
-    AnimationView()
-}
 
