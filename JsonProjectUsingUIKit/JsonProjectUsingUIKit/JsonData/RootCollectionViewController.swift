@@ -37,16 +37,14 @@ class RootCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let key = sortedKeys()[section]
-        if let noOfItems = dictOfEvents[key]?.count {
-            return noOfItems + 1
-        }
-        return 0
+        return (dictOfEvents[key]?.count ?? 0)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         cell.contentView.subviews.forEach{$0.removeFromSuperview()}
         cell.backgroundColor = .white
+        
         
         let key = sortedKeys()[indexPath.section]
         
@@ -58,7 +56,7 @@ class RootCollectionViewController: UICollectionViewController {
             label.text = key
             label.font = UIFont.boldSystemFont(ofSize: 20)
             cell.backgroundColor = UIColor(red: 0.85 , green: 1, blue: 0, alpha: 0.85)
-            cell.contentView.addSubview(label)
+            cell.addSubview(label)
             
             label.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
         }
@@ -90,7 +88,7 @@ class RootCollectionViewController: UICollectionViewController {
 
 extension RootCollectionViewController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width , height: (indexPath.item == 0) ? 40 : 60 )
+        return CGSize(width: collectionView.frame.width , height: (indexPath.item == 0) ? 40 : 50 )
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)

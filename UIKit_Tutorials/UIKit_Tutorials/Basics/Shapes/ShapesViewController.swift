@@ -23,9 +23,12 @@ class ShapesViewController: UIViewController {
         circle.translatesAutoresizingMaskIntoConstraints=false
         return circle
     }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         view.addSubview(rectangle)
         rectangle.heightAnchor.constraint(equalToConstant: 120).isActive=true
